@@ -6,7 +6,7 @@ import java.util.Set;
 
 public class JavaSpellChecker {
 
-    private static final File WORDS_DICTIONARY = new File("/usr/share/dict/words");
+    private static final File DICTIONARY_WORDS = new File("/usr/share/dict/words");
 
     boolean checkSpelling(String input) throws IOException {
         Set<String> words = readDictionary();
@@ -22,11 +22,11 @@ public class JavaSpellChecker {
     private Set<String> readDictionary() throws IOException {
         Set<String> words = new HashSet<String>();
         words.add("java"); // add java to dictionary
-        InputStream stream = new FileInputStream(WORDS_DICTIONARY);
+        InputStream stream = new FileInputStream(DICTIONARY_WORDS);
         try {
-            BufferedReader br = new BufferedReader(new InputStreamReader(stream, "UTF-8"));
+            BufferedReader reader = new BufferedReader(new InputStreamReader(stream, "UTF-8"));
             String word;
-            while ((word = br.readLine()) != null) {
+            while ((word = reader.readLine()) != null) {
                 words.add(word);
             }
         } finally {

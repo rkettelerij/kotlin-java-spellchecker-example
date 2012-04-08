@@ -6,7 +6,7 @@ import java.util.Set
 
 class KotlinSpellChecker {
 
-    private val WORDS_DICTIONARY = File("/usr/share/dict/words");
+    private val DICTIONARY_WORDS = File("/usr/share/dict/words");
 
     fun checkSpelling(input : String) : Boolean {
         val words = readDictionary()
@@ -21,10 +21,10 @@ class KotlinSpellChecker {
 
     private fun readDictionary() : Set<String> {
         val words = hashSet<String>("kotlin") // add kotlin to dictionary
-        val stream = FileInputStream(WORDS_DICTIONARY).buffered();
+        val stream = FileInputStream(DICTIONARY_WORDS).buffered();
         try {
-            val br = InputStreamReader(stream, "UTF-8");
-            br.forEachLine( { words.add(it)} )
+            val reader = InputStreamReader(stream, "UTF-8");
+            reader.forEachLine( { words.add(it)} )
         } finally {
             stream.close();
         }
