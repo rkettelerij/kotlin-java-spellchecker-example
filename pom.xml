@@ -13,6 +13,14 @@
         <kotlin-sdk>${project.basedir}/../kotlin/dist/kotlinc</kotlin-sdk>
      </properties>
 
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.10</version>
+        </dependency>
+    </dependencies>
+
     <pluginRepositories>
         <pluginRepository>
             <id>kotlin-maven-plugin</id>
@@ -33,8 +41,6 @@
                             <goal>compile</goal>
                         </goals>
                         <configuration>
-                            <src>${project.basedir}/src/main/kotlin</src>
-                            <output>${project.build.outputDirectory}</output>
                             <runIf>{{ new File( project.build.sourceDirectory ).directory }}</runIf>
                             <verbose>false</verbose>
                             <kotlinJars>

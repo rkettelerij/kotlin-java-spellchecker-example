@@ -8,7 +8,7 @@ public class JavaSpellChecker {
 
     private static final File WORDS_DICTIONARY = new File("/usr/share/dict/words");
 
-    private boolean checkSpelling(String input) throws IOException {
+    boolean checkSpelling(String input) throws IOException {
         Set<String> words = readDictionary();
         for (String word : input.toLowerCase().split(" ")) {
             if (!words.contains(word)) {
