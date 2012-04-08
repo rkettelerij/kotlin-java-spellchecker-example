@@ -13,7 +13,7 @@ class SpellCheckerTest {
     }
 
     test fun kotlinSpellChecker() {
-        val kotlinSpellChecker = JavaSpellChecker()
+        val kotlinSpellChecker = KotlinSpellChecker()
         assertTrue(kotlinSpellChecker.checkSpelling("This is valid text"))
         assertFalse(kotlinSpellChecker.checkSpelling("This is a invalid teext"))
     }
