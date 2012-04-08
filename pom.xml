@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>kotlin-java-spellchecker-example</groupId>
+    <artifactId>kotlin-java-spellchecker-example</artifactId>
+    <version>1.0</version>
+
+    <properties>
+        <!-- point to your kotlin build, workaround until the kotlin-maven-plugin is fixed -->
+        <kotlin-sdk>${project.basedir}/../kotlin/dist/kotlinc</kotlin-sdk>
+     </properties>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>kotlin-maven-plugin</id>
+            <url>http://evgenyg.artifactoryonline.com/evgenyg/repo</url>
+        </pluginRepository>
+    </pluginRepositories>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.goldin.plugins</groupId>
+                <artifactId>kotlin-maven-plugin</artifactId>
+                <version>0.2.3.8-beta-10</version>
+                <executions>
+                    <execution>
+                        <id>compile-kotlin-sources</id>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                        <configuration>
+                            <src>${project.basedir}/src/main/kotlin</src>
+                            <output>${project.build.outputDirectory}</output>
+                            <runIf>{{ new File( project.build.sourceDirectory ).directory }}</runIf>
+                            <verbose>false</verbose>
+                            <kotlinJars>
+                                <jar>${kotlin-sdk}/lib/kotlin-build-tools.jar</jar>
+                                <jar>${kotlin-sdk}/lib/kotlin-compiler.jar</jar>
+                                <jar>${kotlin-sdk}/lib/kotlin-runtime.jar</jar>
+                                <jar>${kotlin-sdk}/lib/intellij-core.jar</jar>
+                                <jar>${kotlin-sdk}/lib/picocontainer.jar</jar>
+                                <jar>${kotlin-sdk}/lib/trove4j.jar</jar>
+                                <jar>${kotlin-sdk}/lib/guava-11.0.1.jar</jar>
+                                <jar>${kotlin-sdk}/lib/asm-commons.jar</jar>
+                                <jar>${kotlin-sdk}/lib/asm.jar</jar>
+                            </kotlinJars>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+
+    </build>
+    
+</project>
